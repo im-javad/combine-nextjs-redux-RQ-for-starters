@@ -4,4 +4,30 @@ section#home-page {
       @include underline();
     }
   }
+  div.adding-module {
+    div.module {
+      z-index: 1000;
+      transform: translate(-50%, -50%);
+      div.close-module {
+        position: absolute;
+        top: 7px;
+        right: 10px;
+        font-size: 25px;
+        color: red;
+      }
+      div.inputs {
+        div.input {
+          input {
+            border-bottom: 1px solid;
+            border-left: 1px solid;
+            border-radius: 18px 28px 0px 3px;
+            width: 100%;
+            &::placeholder {
+              color: aqua;
+            }
+          }
+        }
+      }
+    }
+  }
 }
