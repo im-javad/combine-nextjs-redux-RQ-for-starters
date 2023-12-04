@@ -1,0 +1,7 @@
+section#home-page {
+  div.add-employe {
+    &::after {
+      @include underline();
+    }
+  }
+}

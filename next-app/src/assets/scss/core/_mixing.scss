@@ -1,0 +1,12 @@
+@mixin transition($undergo: all, $time: 0.5, $effect: ease-in) {
+  transition: $undergo $time $effect;
+}
+
+@mixin underline($color: #7b7b7b) {
+  content: "";
+  display: block;
+  margin-top: 20px;
+  width: 100%;
+  height: 1px;
+  background-color: $color;
+}
