@@ -33,32 +33,42 @@ function AddingEmployeeModule() {
             />
           </div>
         </div>
-        <div className="radios md:flex items-center pb-6">
-          <span className=" text-yellow-500 pe-3">Choose Status: </span>
-          <div className="radio flex items-center pe-2">
-            <input
-              type="radio"
-              value="Active"
-              name="status"
-              id="activeRadio"
-              checked
-              className="bg-white checked:bg-green-500 appearance-none border border-gray-700 rounded-full h-4 w-4"
-            />
-            <label htmlFor="activeRadio" className="text-cyan-300 ps-[2px]">
-              Active
-            </label>
+        <div className="section-two grid grid-cols-1 md:grid-cols-2">
+          <div className="dates pb-6">
+            <div className="input w-full md:w-[90%] mb-6">
+              <input
+                type="date"
+                className=" focus:outline-none w-full bg-slate-800 text-[aqua]  pt-3 pb-1 px-2 border-b-[1px] border-s-[1px] border-yellow-400 rounded-lg"
+              />
+            </div>
           </div>
-          <div className="radio flex items-center">
-            <input
-              type="radio"
-              value="Inactive"
-              name="status"
-              id="inactiveRadio"
-              className="bg-white checked:bg-red-500 appearance-none border border-gray-700 rounded-full h-4 w-4"
-            />
-            <label htmlFor="inactiveRadio" className="text-cyan-300 ps-[2px]">
-              InActive
-            </label>
+          <div className="radios md:flex items-center pb-6">
+            <span className=" text-yellow-500 pe-3">Choose Status: </span>
+            <div className="radio flex items-center pe-2">
+              <input
+                type="radio"
+                value="Active"
+                name="status"
+                id="activeRadio"
+                checked
+                className="bg-white checked:bg-green-500 appearance-none border border-gray-700 rounded-full h-4 w-4"
+              />
+              <label htmlFor="activeRadio" className="text-cyan-300 ps-[2px]">
+                Active
+              </label>
+            </div>
+            <div className="radio flex items-center">
+              <input
+                type="radio"
+                value="Inactive"
+                name="status"
+                id="inactiveRadio"
+                className="bg-white checked:bg-red-500 appearance-none border border-gray-700 rounded-full h-4 w-4"
+              />
+              <label htmlFor="inactiveRadio" className="text-cyan-300 ps-[2px]">
+                InActive
+              </label>
+            </div>
           </div>
         </div>
         <div className="add-btn flex justify-center">
