@@ -1,21 +1,33 @@
+import { ActionsType, FormAction, FormState } from "@/types/homePage";
 import * as React from "react";
+import Swal from "sweetalert2";
 
-type formDataType = {
-  firstname: string;
-  lastname: string;
-  email: string;
-  salary: number | null;
-  status: "Active" | "Inactive" | "";
-};
-
-const formRaducer = (
-  state: formDataType,
-  e: React.FormEvent<HTMLInputElement>
-) => {
-  return {
-    ...state,
-    [(e.target as HTMLInputElement).name]: (e.target as HTMLInputElement).value,
-  };
+const formRaducer = (state: FormState, action: FormAction): FormState => {
+  switch (action.type) {
+    case "SET_FIRST_NAME":
+      return { ...state, firstname: action.payload };
+    case "SET_LAST_NAME":
+      return { ...state, lastname: action.payload };
+    case "SET_EMAIL":
+      return { ...state, email: action.payload };
+    case "SET_SALARY":
+      return { ...state, salary: action.payload };
+    case "SET_DATE":
+      return { ...state, date: action.payload };
+    case "SET_STATUS":
+      return { ...state, status: action.payload };
+    case "RESET":
+      return {
+        firstname: "",
+        lastname: "",
+        email: "",
+        salary: "",
+        date: "",
+        status: "",
+      };
+    default:
+      return state;
+  }
 };
 
 function AddingEmployeeModule() {
@@ -23,14 +35,69 @@ function AddingEmployeeModule() {
     firstname: "",
     lastname: "",
     email: "",
-    salary: null,
+    salary: "",
+    date: "",
     status: "",
   });
+
+  const handleInputChange = (
+    type: ActionsType,
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    switch (type) {
+      case "SET_FIRST_NAME":
+        setFormData({ type, payload: e.target.value });
+        break;
+      case "SET_LAST_NAME":
+        setFormData({ type, payload: e.target.value });
+        break;
+      case "SET_EMAIL":
+        setFormData({ type, payload: e.target.value });
+        break;
+      case "SET_SALARY":
+        setFormData({ type, payload: parseFloat(e.target.value) || "" });
+        break;
+      case "SET_DATE":
+        setFormData({ type, payload: e.target.valueAsDate || "" });
+        break;
+      case "SET_STATUS":
+        setFormData({
+          type,
+          payload: e.target.value as "Active" | "Inactive" | "",
+        });
+        break;
+      default:
+        break;
+    }
+  };
 
   const handleFormSubmited = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log(formData);
+    const { firstname, lastname, email, salary, date, status }: FormState =
+      formData;
+
+    firstname == "" ||
+    lastname == "" ||
+    email == "" ||
+    salary == "" ||
+    date == null ||
+    status == ""
+      ? Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: "please fill the form",
+          showConfirmButton: false,
+          timer: 2500,
+        })
+      : (Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "employee added successfully",
+          showConfirmButton: false,
+          timer: 2500,
+        }),
+        setFormData({ type: "RESET" }));
   };
 
   return (
@@ -42,7 +109,8 @@ function AddingEmployeeModule() {
             <div className="input w-full md:w-[90%] mb-6">
               <input
                 type="text"
-                onChange={setFormData}
+                value={formData.firstname}
+                onChange={(e) => handleInputChange("SET_FIRST_NAME", e)}
                 name="firstname"
                 placeholder="First Name"
                 className=" focus:outline-none w-full bg-slate-800 text-yellow-400  pt-3 pb-1 px-2"
@@ -51,7 +119,8 @@ function AddingEmployeeModule() {
             <div className="input w-full md:w-[90%] mb-6">
               <input
                 type="text"
-                onChange={setFormData}
+                value={formData.lastname}
+                onChange={(e) => handleInputChange("SET_LAST_NAME", e)}
                 name="lastname"
                 placeholder="Last Name"
                 className=" focus:outline-none w-full bg-slate-800 text-yellow-400 pt-3 pb-1 px-2"
@@ -60,7 +129,8 @@ function AddingEmployeeModule() {
             <div className="input w-full md:w-[90%] mb-6">
               <input
                 type="text"
-                onChange={setFormData}
+                value={formData.email}
+                onChange={(e) => handleInputChange("SET_EMAIL", e)}
                 name="email"
                 placeholder="Email"
                 className=" focus:outline-none w-full bg-slate-800 text-yellow-400  pt-3 pb-1 px-2"
@@ -69,7 +139,8 @@ function AddingEmployeeModule() {
             <div className="input w-full md:w-[90%] mb-6">
               <input
                 type="text"
-                onChange={setFormData}
+                value={formData.salary}
+                onChange={(e) => handleInputChange("SET_SALARY", e)}
                 name="salary"
                 placeholder="Salary"
                 className=" focus:outline-none w-full bg-slate-800 text-yellow-400  pt-3 pb-1 px-2"
@@ -81,7 +152,12 @@ function AddingEmployeeModule() {
               <div className="input w-full md:w-[90%] mb-6">
                 <input
                   type="date"
-                  onChange={setFormData}
+                  value={
+                    formData.date
+                      ? formData.date.toISOString().split("T")[0]
+                      : ""
+                  }
+                  onChange={(e) => handleInputChange("SET_DATE", e)}
                   name="date"
                   className=" focus:outline-none w-full bg-slate-800 text-[aqua]  pt-3 pb-1 px-2 border-b-[1px] border-s-[1px] border-yellow-400 rounded-lg"
                 />
@@ -92,7 +168,7 @@ function AddingEmployeeModule() {
               <div className="radio flex items-center pe-2">
                 <input
                   type="radio"
-                  onChange={setFormData}
+                  onChange={(e) => handleInputChange("SET_STATUS", e)}
                   value="Active"
                   name="status"
                   id="activeRadio"
@@ -105,7 +181,7 @@ function AddingEmployeeModule() {
               <div className="radio flex items-center">
                 <input
                   type="radio"
-                  onChange={setFormData}
+                  onChange={(e) => handleInputChange("SET_STATUS", e)}
                   value="Inactive"
                   name="status"
                   id="inactiveRadio"
