@@ -1,7 +1,11 @@
-import { FaTrashAlt } from "react-icons/fa";
-import { LiaEdit } from "react-icons/lia";
+import UsersData from '../../../api/database/data.json';
+import TableTr from './table-tr';
 
-function Table() {
+const Table = () => {
+  const trs = UsersData.map((user , i) => {
+    return <TableTr {...user} key={i}/>
+  })
+  
   return (
     <table className="border-collapse w-full mt-5">
       <thead>
@@ -27,7 +31,8 @@ function Table() {
         </tr>
       </thead>
       <tbody>
-        <tr className="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+        {trs}
+        {/* <tr className="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
           <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
             <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
               Name
@@ -120,7 +125,7 @@ function Table() {
               </a>
             </div>
           </td>
-        </tr>
+        </tr> */}
       </tbody>
     </table>
   );

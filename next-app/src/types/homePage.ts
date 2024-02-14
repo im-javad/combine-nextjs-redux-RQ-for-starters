@@ -15,7 +15,6 @@ export type ActionsType =
   | "SET_DATE"
   | "SET_STATUS";
 
-
 export type FormAction =
   | { type: "SET_FIRST_NAME"; payload: string }
   | { type: "SET_LAST_NAME"; payload: string }
@@ -24,3 +23,13 @@ export type FormAction =
   | { type: "SET_DATE"; payload: Date | "" }
   | { type: "SET_STATUS"; payload: "Active" | "Inactive" | "" }
   | { type: "RESET" };
+
+export type DatabaseUsers = {
+  id: number;
+  name: string;
+  avatar: string;
+  email: string;
+  salary: number;
+  date: string;
+  status: string;
+};

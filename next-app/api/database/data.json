@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "user 1",
+    "avatar": "https://randomuser.me/api/portraits/men/1.jpg",
+    "email": "user1@gmail.com",
+    "salary": 1000,
+    "date": "2021-11-11",
+    "status": "Active"
+  },
+  {
+    "id": 2,
+    "name": "user 2",
+    "avatar": "https://randomuser.me/api/portraits/men/2.jpg",
+    "email": "user2@gmail.com",
+    "salary": 2000,
+    "date": "2022-22-22",
+    "status": "Inactive"
+  },
+  {
+    "id": 3,
+    "name": "user 3",
+    "avatar": "https://randomuser.me/api/portraits/men/3.jpg",
+    "email": "user3@gmail.com",
+    "salary": 3000,
+    "date": "2033-33-33",
+    "status": "Active"
+  },
+  {
+    "id": 4,
+    "name": "user 4",
+    "avatar": "https://randomuser.me/api/portraits/men/4.jpg",
+    "email": "user4@gmail.com",
+    "salary": 4000,
+    "date": "2044-44-44",
+    "status": "Inactive"
+  },
+  {
+    "id": 5,
+    "name": "user 5",
+    "avatar": "https://randomuser.me/api/portraits/men/5.jpg",
+    "email": "user5@gmail.com",
+    "salary": 5000,
+    "date": "2055-55-55",
+    "status": "Active"
+  }
+]

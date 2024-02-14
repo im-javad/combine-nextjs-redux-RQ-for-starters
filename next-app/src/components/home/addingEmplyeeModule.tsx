@@ -30,7 +30,7 @@ const formRaducer = (state: FormState, action: FormAction): FormState => {
   }
 };
 
-function AddingEmployeeModule() {
+const AddingEmployeeModule = () => {
   const [formData, setFormData] = React.useReducer(formRaducer, {
     firstname: "",
     lastname: "",
@@ -205,6 +205,6 @@ function AddingEmployeeModule() {
       </div>
     </div>
   );
-}
+};
 
 export default AddingEmployeeModule;

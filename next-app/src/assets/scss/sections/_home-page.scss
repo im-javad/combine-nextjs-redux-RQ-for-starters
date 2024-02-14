@@ -4,7 +4,8 @@ section#home-page {
       @include underline();
     }
   }
-  div.adding-module {
+  div.adding-module , 
+  div.updating-module {
     div.module {
       z-index: 1000;
       transform: translate(-50%, -50%);

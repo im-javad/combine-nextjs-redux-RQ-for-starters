@@ -1,6 +1,6 @@
 import { IoMdPersonAdd } from "react-icons/io";
 
-function Head() {
+const Head = () => {
   return (
     <>
       <div className="text-center">
